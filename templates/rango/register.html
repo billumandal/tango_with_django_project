@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register User</title>
+	</head>
+
+	<body>
+		<h2>Register with Rango</h2>
+
+		{% if registered %}
+			Rango Says: <strong>Thank You for registering!</strong><br><br>
+			<a href="/rango/">Return to the homepage</a><br/>
+			<a href="/rango/login/">Click to login</a><br/>
+		{% else %}
+			<form id='user_form' method='post' action='/rango/register/' enctype='multipart/form-data'>
+
+				{% csrf_token %}
+
+				<!-- Display each form. The as_p method wraps each element in a paragraph (<p>)
+					element. This ensures each element appears on a new line, making 
+					everything looks neater. -->
+				{{ user_form.as_p }} 
+				{{ profile_form.as_p }}
+
+				<!-- Provide a button to click to submit the form. -->
+				<input type='submit' name='submit' value='Register' />
+			</form>
+		{% endif %}
+		<h3>If already registered, then login <strong><a href='/rango/login/'>here</a></strong></h3>
+	</body>
+</html>
