@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-{% load staticfiles %} <!-- New Line -->
+{% load staticfiles %} 
 
 <html>
 	<head lang='en'>
@@ -13,7 +13,7 @@
 		        border-top: 40px solid #D20E0E;
 		        border-bottom: 40px solid #D20E0E;
 		        /*border-left: 20px solid #9355a8;
-		        border-right: 20px solid #9355a8*/;
+		        border-right: 20px solid #9355a8;*/
 		        background: url('{% static "images/amc.jpg" %}') no-repeat center center fixed;
 		        -webkit-background-size: 87%;
 		        -moz-background-size: 87%;
@@ -25,7 +25,7 @@
 		      {
 		      	background-color: #E47541;
 		      	font-style: italic;
-		      	/*color: white;
+		      	/*color: white;*/
 		      }
 		      .blue-background
 		      {
@@ -50,7 +50,7 @@
 		</style>
 	</head>
 	<body>
-		<div>
+		<div style="height:760px">
 			{% block body_block %}
 				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				{{ baseclass }}
@@ -64,31 +64,31 @@
 			<ul>
 			{% if user.is_authenticated %}
 				<div class='col-sm-3'>
-					<p><a class="btn btn-default btn-block yellow-background" href='/rango/restricted/'>Go to Restricted Page &raquo;</a></p>
+					<p><a class="btn btn-default btn-block yellow-background" href="{% url 'restricted' %}">Go to Restricted Page &raquo;</a></p>
 				</div>
 				<div class='col-sm-3'>
-					<p><a class="btn btn-block  btn-default red-background" href='/rango/logout/'>Click to Logout &raquo;</a></p>
+					<p><a class="btn btn-block  btn-default red-background" href="{% url 'logout' %}">Click to Logout &raquo;</a></p>
 				</div>
 				<div class='col-sm-3'>
-					<a class="btn btn-default btn-block blue-background" href="/rango/add_category/">Add Another Category &raquo;</a>
+					<a class="btn btn-default btn-block blue-background" href="{% url 'add_category' %}">Add Another Category &raquo;</a>
 				</div>
 				<div class='col-sm-3'>
-					<a class="btn btn-default btn-block green-background" href='./about/'>About Rango &raquo;</a>
+					<a class="btn btn-default btn-block green-background" href="{% url 'about' %}">About Rango &raquo;</a>
 				</div>
 			{% else %}
 				<div class='col-sm-4'>
-					<p><a class="btn btn-default btn-block blue-background" href='/rango/register/'>Click to Register &raquo;</a></p>
+					<p><a class="btn btn-default btn-block blue-background" href="{% url 'register' %}">Click to Register &raquo;</a></p>
 				</div>
 				<div class='col-sm-4'>
-					<p><a class="btn btn-default btn-block red-background" style='background-color:red' href='/rango/login/'>Click to Login &raquo;</a></p>
+					<p><a class="btn btn-default btn-block red-background" style='background-color:red' href="{% url 'login' %}">Click to Login &raquo;</a></p>
 				</div>
 				<div class='col-sm-4'>
-					<a class="btn btn-default btn-block green-background" href='./about/'>About Rango &raquo;</a>
+					<a class="btn btn-default btn-block green-background" href="{% url 'about' %}">About Rango &raquo;</a>
 				</div>
 			{% endif %}
 			</ul>
-
-			(c) Copyright Billu 2015
+			
+			&copy; Copyright Billu 2015
 		</div>
 	</body>
 </html>

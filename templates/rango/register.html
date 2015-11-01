@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Register User</title>
-	</head>
+{% entends 'rango/base.html' %}
 
-	<body>
+{% load staticfiles %}
+
+{% block title %}Register User{% endblock %}
+
+{% block body_block %}
+
 		<h2>Register with Rango</h2>
 
 		{% if registered %}
 			Rango Says: <strong>Thank You for registering!</strong><br><br>
-			<a href="/rango/">Return to the homepage</a><br/>
-			<a href="/rango/login/">Click to login</a><br/>
+			<a href="{% url 'index' %}">Return to the homepage</a><br/>
+			<a href="{% url 'login' %}">Click to login</a><br/>
 		{% else %}
 			<form id='user_form' method='post' action='/rango/register/' enctype='multipart/form-data'>
 
@@ -26,6 +28,6 @@
 				<input type='submit' name='submit' value='Register' />
 			</form>
 		{% endif %}
-		<h3>If already registered, then login <strong><a href='/rango/login/'>here</a></strong></h3>
-	</body>
-</html>
+		<h3>If already registered, then login <strong><a href="{% url 'login' %}">here</a></strong></h3>
+
+{% endblock %}

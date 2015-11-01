@@ -11,7 +11,7 @@
 
 		<h1>The about page says ... </h1>
 		I'm clueless. <strong>{{ clueless }}</strong><br />
-		Press <a href="..">Rango Home Page</a> to go to the Rango home page.<br />
+		Press <a href="{% url 'index' %}">Rango Home Page</a> to go to the Rango home page.<br />
 		{{ aboutold }}<br/>
 		<img src = "{% static 'images/twd.jpg' %}" alt = "Picture of tango with django" />
 		<br/><i>{{ answertocontext }} </i><br/>

@@ -16,8 +16,8 @@ class Category(models.Model):
 	def __unicode__(self):
 		return self.name
 
-# class Meta(models.Model):
-# 	verbose_name_plural	= True
+	class Meta():
+		verbose_name_plural	= "Categories"
 
 class Page(models.Model):
 	category = models.ForeignKey(Category)
@@ -52,3 +52,4 @@ class UserProfile(models.Model):
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
 		return self.user.username
+

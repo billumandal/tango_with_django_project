@@ -52,20 +52,20 @@
 				<h1>Rango Says .... Hello {{ user.username }}</h1>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-default btn-block" href='/rango/restricted/'>Go to Restricted Page &raquo;</a></p>
+				<p><a class="btn btn-default btn-block" href="{% url 'restricted' %}">Go to Restricted Page &raquo;</a></p>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-block red-background" href='/rango/logout/'>Click to Logout &raquo;</a></p>
+				<p><a class="btn btn-block red-background" href="{% url 'logout' %}">Click to Logout &raquo;</a></p>
 			</div>
 			{% else %}
 			<div class='col-sm-12'>
 				<h1>Rango Says .... Hello world!</h1>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-default btn-block" href='/rango/register/'>Click to Register &raquo;</a></p>
+				<p><a class="btn btn-default btn-block" href="{% url 'logout' %}">Click to Register &raquo;</a></p>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-block" style='background-color:red' href='/rango/login/'>Click to Login &raquo;</a></p>
+				<p><a class="btn btn-block" style='background-color:red' href="{% url 'login' %}">Click to Login &raquo;</a></p>
 			</div>
 			{% endif %}
 		  </div>
@@ -76,8 +76,8 @@
 		    
 		    <div class='col-sm-6'>
 	          <h4>This is my second Django web app</h4>
-	          <p><a class="btn btn-default btn-lg btn-block" href='./about/'>About Rango &raquo;</a></p>
-	          <p><a class="btn btn-default btn-lg btn-block" href='./aboutold/'>Go to OLD ABOUT page <br> which uses <i>HttpResponse</i> from 'django.http' &raquo;</a></p>
+	          <p><a class="btn btn-default btn-lg btn-block" href="{% url 'about' %}">About Rango &raquo;</a></p>
+	          <p><a class="btn btn-default btn-lg btn-block" href="{% url 'aboutold' %}">Go to OLD ABOUT page <br> which uses <i>HttpResponse</i> from 'django.http' &raquo;</a></p>
 	          <p><a class="btn btn-default btn-lg btn-block" href='#categories_list'>Go to Categories List &raquo;</a></p>
 	        </div>
 
@@ -95,12 +95,13 @@
 					<ul>
 						{% for category in categories %}
 						<li>
-							<strong><a class="btn btn-default btn-lg btn-block" href="/rango/category/{{ category.slug }}">{{ category.name }}</a></strong>
+							<strong><a class="btn btn-default btn-lg btn-block" href="{% url 'category' category.slug %}">{{ category.name }}</a></strong>
+							{# <strong><a class="btn btn-default btn-lg btn-block" href="/rango/category/{{ category.slug }}">{{ category.name }}</a></strong> #}
 						</li>
 						{% endfor %}
 						<hr>
 						{% if user.is_authenticated %}
-						<a class="btn btn-lg btn-default btn-block blue-background" href="/rango/add_category/">Click here to Add Another Category &raquo;</a>
+						<a class="btn btn-lg btn-default btn-block blue-background" href="{% url 'add_category' %}">Click here to Add Another Category &raquo;</a>
 						{% endif %}
 					</ul>
 				{% else %}
@@ -119,6 +120,9 @@
 					<strong>There are no pages with views</strong>
 				{% endif %}
 		  </div>
+		</div>
+		<div class="blockquote-reverse footer" name="Footer">
+			&copy; Copyright Billu 2015
 		</div>
 	</body>
 </html>
