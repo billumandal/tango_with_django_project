@@ -70,19 +70,22 @@
 					<p><a class="btn btn-block  btn-default red-background" href="{% url 'logout' %}">Click to Logout &raquo;</a></p>
 				</div>
 				<div class='col-sm-3'>
-					<a class="btn btn-default btn-block blue-background" href="{% url 'add_category' %}">Add Another Category &raquo;</a>
+					<a class="btn btn-default btn-block blue-background" href="{% url 'index' %}">Go to Home Page &raquo;</a>
 				</div>
 				<div class='col-sm-3'>
 					<a class="btn btn-default btn-block green-background" href="{% url 'about' %}">About Rango &raquo;</a>
 				</div>
 			{% else %}
-				<div class='col-sm-4'>
+				<div class='col-sm-3'>
 					<p><a class="btn btn-default btn-block blue-background" href="{% url 'register' %}">Click to Register &raquo;</a></p>
 				</div>
-				<div class='col-sm-4'>
+				<div class='col-sm-3'>
 					<p><a class="btn btn-default btn-block red-background" style='background-color:red' href="{% url 'login' %}">Click to Login &raquo;</a></p>
 				</div>
-				<div class='col-sm-4'>
+				<div class='col-sm-3'>
+					<a class="btn btn-default btn-block blue-background" href="{% url 'index' %}">Go to Home Page &raquo;</a>
+				</div>
+				<div class='col-sm-3'>
 					<a class="btn btn-default btn-block green-background" href="{% url 'about' %}">About Rango &raquo;</a>
 				</div>
 			{% endif %}

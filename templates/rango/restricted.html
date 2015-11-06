@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Restricted Page{% endblock %}
+
+{% block body_block %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+	
+	<ol>The Various context_dict sayings:
+		{{ context_dict }}
+		{% for dict in context_dict %}
+			<li>{{ dict }}</li>
+		{% endfor %}
+
+
+		<li>This is to check wtf ~>{{ whythispage }}</li>
+		<li>This is to check wtf ~>{{ whathappens }}</li>
+		<li>This is to check wtf ~>{{ newpagesetup }}</li>
+	</ol>
+
+{% endblock %}

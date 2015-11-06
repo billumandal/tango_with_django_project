@@ -185,9 +185,12 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-	return HttpResponse("Since you're logged in, you can see this text! <br><br/> Btw I find it difficult why we've kept this page.")
-
-# Here I use the login_required() decorator to ensure only those logged in can access the view
+	# return HttpResponse("Since you're logged in, you can see this text! <br><br/> Btw I find it difficult why we've kept this page.")
+	# Here I use the login_required() decorator to ensure only those logged in can access the view
+	context_dict = {"newpagesetup": "Ok, this seems to be to practice setting up new pages.",
+					"whathappens": "What happens if a dictionary is not given with the page?",
+					"whythispage": "You can see this page cause it's to be seen only by logged in people."} 
+	return render(request, './rango/restricted.html', context_dict)
 
 @login_required
 def user_logout(request):
