@@ -12,7 +12,7 @@
 		{% if registered %}
 			Rango Says: <strong>Thank You for registering!</strong><br><br>
 			<a href="{% url 'index' %}">Return to the homepage</a><br/>
-			<a href="{% url 'login' %}">Click to login</a><br/>
+			<a href="{% url 'auth_login' %}">Click to login</a><br/>
 		{% else %}
 			<form id='user_form' method='post' action='/rango/register/' enctype='multipart/form-data'>
 

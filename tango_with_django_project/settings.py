@@ -101,7 +101,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = '/rango/login/'
+LOGIN_URL = '/accounts/login/'
 
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7

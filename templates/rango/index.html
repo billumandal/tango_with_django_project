@@ -55,17 +55,17 @@
 				<p><a class="btn btn-default btn-block" href="{% url 'restricted' %}">Go to Restricted Page &raquo;</a></p>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-block red-background" href="{% url 'logout' %}">Click to Logout &raquo;</a></p>
+				<p><a class="btn btn-block red-background" href="{% url 'auth_logout' %}?next=/rango/">Click to Logout &raquo;</a></p>
 			</div>
 			{% else %}
 			<div class='col-sm-12'>
 				<h1>Rango Says .... Hello world!</h1>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-default btn-block" href="{% url 'logout' %}">Click to Register &raquo;</a></p>
+				<p><a class="btn btn-default btn-block" href="{% url 'registration_register' %}">Click to Register &raquo;</a></p>
 			</div>
 			<div class='col-sm-6'>
-				<p><a class="btn btn-block" style='background-color:red' href="{% url 'login' %}">Click to Login &raquo;</a></p>
+				<p><a class="btn btn-block" style='background-color:red' href="{% url 'auth_login' %}">Click to Login &raquo;</a></p>
 			</div>
 			{% endif %}
 		  </div>
