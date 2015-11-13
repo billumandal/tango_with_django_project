@@ -2,17 +2,40 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
 
 def index(request):
-	#this is the dictionary to pass to the template engine as its context
+	# This is the dictionary to pass to the template engine as its context
 	category_list = Category.objects.order_by('-likes')[:5]
 	page_list = Page.objects.order_by('-views')[:5]
 	context_dict = {'boldmessage': "I am bold font from the context",
 					'categories': category_list,
+					'pages': page_list,
 					'topfivepages': page_list}
+
+	visits = request.session.get('visits')
+	if not visits:
+		visits = 1
+	reset_last_visit_time = False
+
+	last_visit = request.session.get('last_visit')
+	if last_visit:
+		last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+
+		if (datetime.now() - last_visit_time).seconds > 0:
+			visits = visits + 1
+			reset_last_visit_time = True
+
+	else:
+		reset_last_visit_time = True
+
+	if reset_last_visit_time:
+		request.session['last_visit'] = str(datetime.now())
+		request.session['visits'] = visits
+	context_dict['visits'] = visits
 
 	# Return a rendered response to send to the client 
 	# We make use of the shortcut function to make our lives easier
@@ -20,11 +43,18 @@ def index(request):
 	return render(request, './rango/index.html', context_dict)
 
 def about(request):
+
+	if request.session.get('visits'):
+		count = request.session.get('visits')
+	else:
+		count = 0
+		
 	context_dict = {'clueless': "I don't get why this dictionary needs to be here",
 					'answertocontext': "Ok got this, this is to put various variables in the template by calling on the key",
 					'whataboutnontext': "But what to do if it's not a text, let's put aboutold via this dictionary",
 					'aboutold': 'Press <a href="./aboutold/">Old About</a> to see page which uses HttpResponse of "django.http"',
-					'nontextdoesntwork': "Ok this HTML above didn't work, will see when we go further."}
+					'nontextdoesntwork': "Ok this HTML above didn't work, will see when we go further.",
+					'visits': count}
 
 	return render(request, './rango/about.html', context_dict)
 
