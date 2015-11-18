@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Add Page to a Category</title>
-	<head>
+{% extends 'rango/base.html' %}
 
-	<body>
-		<h1>Add a Page</h2>
+{% block title %}Add Page{% endblock %}
 
-		<form id="page_form" method="post" action="/rango/add_page/">
+{% block body_block %}
+{% if category %}
 
-			{% csrf_token %}
-			{% for hidden in form.hidden_fields %}
-				{{ hidden }}
-			{% endfor %}
+	<form role="form" id="page_form" method="post" action="/rango/category/{{category.slug}}/add_page/">
+	<h2 class="form-signin-heading">Add a Page to <a href="/rango/category/{{category.slug}}/">{{ category.name }}</a></h2>
+		{% csrf_token %}
+		{% for hidden in form.hidden_field %}
+			{{ hidden }}
+		{% endfor %}
 
-			{% for field in form.visible_fields %}
-				{{ field.errors }}
-				{{ field.help_text }}
-				{{ field }}
-			{% endfor %}
-
-			<input type="submit" name="submit" value="Create Page" />
-		</form>
-	</body>
-</html>
+		{% for field in form.visible_fields %}
+			{{ field.errors }}
+			{{ field.help_text }}<br/>
+			{{ field }}<br/>
+		{% endfor %}
+	<br/>
+		<button class="btn btn-primary" type="submit" name="submit">Add Page</button>
+	</form>
+{% else %}
+	<p>This cateogry does not exits.</p>
+{% endif %}

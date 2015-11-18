@@ -1,23 +1,26 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+
 {% load staticfiles %}
 
-<html>
-	<head>
-		<title>The about page for Rango app</title>
-		<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-		<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
-	</head>
-	<body>
+{% block title %}About Rango{% endblock %}
 
-		<h1>The about page says ... </h1>
-		I'm clueless. <strong>{{ clueless }}</strong><br />
-		Press <a href="{% url 'index' %}">Rango Home Page</a> to go to the Rango home page.<br />
-		{{ aboutold }}<br/>
-		There are {{ visits }} people who've visited this page.<br/>
-		<img src = "{% static 'images/twd.jpg' %}" alt = "Picture of tango with django" />
-		<br/><i>{{ answertocontext }} </i><br/>
-		<strong>{{ whataboutnontext }}</strong><br/>
-		{{ nontextdoesntwork }}
-
-	</body>
-</html>
+{% block side_block %}
+    <div class="page-header">
+        <h1>About Rango</h1>
+    </div>
+    <div>
+        <img width="90" height="100" src="{% static 'images/rango.jpg' %}" alt="picture of rango"/><!--New Line-->
+    </div>
+{% endblock %}
+{% block body_block %}
+    <div class='container'>
+        I'm clueless. <strong>{{ clueless }}</strong><br />
+        Press <a href="{% url 'index' %}">Rango Home Page</a> to go to the Rango home page.<br />
+        {{ aboutold }}<br/>
+        There are {{ visits }} people who've visited this page.<br/>
+        <img width='30%' height='40%' src = "{% static 'images/twd.jpg' %}" alt = "Picture of tango with django" />
+        <br/><i>{{ answertocontext }} </i><br/>
+        <strong>{{ whataboutnontext }}</strong><br/>
+        {{ nontextdoesntwork }}
+    </div>
+{% endblock %}

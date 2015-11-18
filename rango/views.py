@@ -13,8 +13,7 @@ def index(request):
 	page_list = Page.objects.order_by('-views')[:5]
 	context_dict = {'boldmessage': "I am bold font from the context",
 					'categories': category_list,
-					'pages': page_list,
-					'topfivepages': page_list}
+					'pages': page_list}
 
 	visits = request.session.get('visits')
 	if not visits:
@@ -234,3 +233,15 @@ def base(request):
 	context_dict = {"baseclass": "this is base template",}
 
 	return render(request, './rango/base.html', context_dict)
+
+def search(request):
+	result_list = []
+
+	if request.method == 'POST':
+		query = request.POST['query'].strip()
+
+		if query:
+			# Run the bing function to get the results list
+			result_list = run_query(query)
+
+	return render(request, 'rango/search.html', {'result_list': result_list})
