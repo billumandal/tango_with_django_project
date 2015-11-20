@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
+fron rango.bing_search import run_query
 
 
 def index(request):
